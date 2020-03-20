@@ -6,10 +6,6 @@ app.listen(3000, function(){
   console.log("Listening on port 3000!")
 });
 
-//app.get('/', function(req, res){
-//  res.sendFile('/home/pi/nodejs/dist/data/recognition/testimage.jpg');
-//}); 
-
 app.get('/recognition/:name', function (req, res, next) {
   var options = {
     root: path.join(__dirname, 'data/recognition/'),
