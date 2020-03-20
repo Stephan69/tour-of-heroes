@@ -1,12 +1,26 @@
 {
-    "compilerOptions": {
-      "module": "commonjs",
-      "esModuleInterop": true,
-      "target": "es6",
-      "moduleResolution": "node",
-      "sourceMap": true,
-      "outDir": "dist",
-      "allowJs": true
-    },
-    "lib": ["es2015"]
-  }
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ESNext",
+    "inlineSourceMap": true,
+    "outDir": "dist",
+    "allowJs": true,
+    //"strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "lib": [
+    "esnext"
+  ]
+}
