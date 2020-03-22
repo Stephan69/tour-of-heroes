@@ -2,6 +2,9 @@
   "name": "picamera",
   "version": "1.0.0",
   "main": "dist/app.js",
+  "bin": {
+    "tslint": "./bin/tslint"
+  },
   "scripts": {
     "start-ir": "tsc && npm run copy-files && node dist/ir.js ir & echo $! > /tmp/.irpid &",
     "stop-ir": "kill $(cat /tmp/.irpid)",

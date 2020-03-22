@@ -17,7 +17,8 @@ const storePath = "./dist/data/camera/";
 
             lcd.clear().print('FOTO IS GENOMEN!');
 
-            Fs.writeFileSync(storePath + "testimage.jpg", image);
+            const dateString : number = Date.parse(new Date().toLocaleDateString());
+            Fs.writeFileSync(storePath + "testimage${dateString}.jpg", image);
 
             jimpRead(storePath + "testimage.jpg");
 

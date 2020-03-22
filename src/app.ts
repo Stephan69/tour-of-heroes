@@ -7,7 +7,7 @@ app.listen(3000, function(){
 });
 
 app.get('/recognition/:name', function (req, res, next) {
-  var options = {
+  const options = {
     root: path.join(__dirname, 'data/recognition/'),
     dotfiles: 'deny',
     headers: {
@@ -16,7 +16,7 @@ app.get('/recognition/:name', function (req, res, next) {
     }
   }
 
-  var fileName = req.params.name
+  const fileName = req.params.name
   res.sendFile(fileName, options, function (err) {
     if (err) {
       next(err)
