@@ -4,13 +4,14 @@ import * as cv from 'opencv4nodejs';
 
 const basePath = './dist/data/';
 const imgsPath = path.resolve(basePath, 'faces');
+const cameraPath = path.resolve(basePath + "camera");
 const nameMappings = ['stephan', 'sebastiaan'];
 
 const imgFiles = fs.readdirSync(imgsPath);
 
 const classifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_DEFAULT);
 
-function processFaceRecognition() {
+function processFaceRecognition(cameraFile : string) {
   // whatever
   const trainImgs = imgFiles
     // get absolute file path
@@ -30,7 +31,7 @@ function processFaceRecognition() {
   lbph.train(trainImgs, labels);
 
   const results = new Array();
-  const picameraImg = cv.imread(path.resolve(basePath, 'camera/testimage.jpg'));
+  const picameraImg = cv.imread(cameraPath + "/" + cameraFile);
   const result = classifier.detectMultiScale(picameraImg.bgrToGray(), 1.3, 6, 0, new cv.Size(24, 24));
   const minDetections = 1;
   result.objects.forEach((faceRect, i) => {
@@ -46,7 +47,7 @@ function processFaceRecognition() {
 
     drawRectangle(picameraImg, faceRect, results[i]);
   });
-  cv.imwrite(basePath + 'recognition/testimage.jpg', picameraImg);
+  cv.imwrite(basePath + `recognition/${cameraFile}`, picameraImg);
   return results;
 };
 

@@ -17,12 +17,13 @@ const storePath = "./dist/data/camera/";
 
             lcd.clear().print('FOTO IS GENOMEN!');
 
-            const dateString : number = Date.parse(new Date().toLocaleDateString());
-            Fs.writeFileSync(storePath + "testimage${dateString}.jpg", image);
+            const dateString : number = Date.parse(new Date().toISOString());
+            const cameraFile = `testimage${dateString}.jpg`;
+            Fs.writeFileSync(storePath + cameraFile, image);
 
-            jimpRead(storePath + "testimage.jpg");
+            jimpRead(storePath + cameraFile);
 
-            const results = Fr.processFaceRecognition();
+            const results = Fr.processFaceRecognition(cameraFile);
 
             printLCDResults(results);
         });
