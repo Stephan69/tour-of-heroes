@@ -1,4 +1,4 @@
-import { config } from './protractor.conf';
+const config = require('./protractor.conf').config;
 
 config.capabilities = {
     browserName: 'chrome',
@@ -7,5 +7,4 @@ config.capabilities = {
     }
 };
 
-const _config = config;
-export { _config as config };
+exports.config = config;
