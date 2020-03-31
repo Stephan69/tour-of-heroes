@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/helmet": "0.0.45",
+    "angular-in-memory-web-api": "^0.10.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "git": "^0.1.5",
