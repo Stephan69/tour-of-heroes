@@ -5,14 +5,13 @@ jobs:
     docker:
       - image: circleci/node:10-browsers
     steps:
-      - checkout:
-          path: ~/client-ng
+      - checkout
       - restore_cache:
           key: client-ng-{{ .Branch }}-{{ checksum "package-lock.json" }}
-      - run: npm install
+      - run: cd client-ng && npm install
       - save_cache:
           key: client-ng-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
-      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-      - run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+      - run: cd client-ng && npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: cd client-ng && npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
