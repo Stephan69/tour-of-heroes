@@ -1,16 +1,16 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/tour-of-heroes
+    working_directory: ~/tour-of-heroes/client-ng
     docker:
       - image: circleci/node:10-browsers
     steps:
       - checkout
       - restore_cache:
-          key: tour-of-heroes-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: tour-of-heroes/client-ng-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: npm install
       - save_cache:
-          key: tour-of-heroes-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: tour-of-heroes/client-ng-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
       - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
