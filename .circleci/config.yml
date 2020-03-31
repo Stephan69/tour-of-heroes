@@ -9,6 +9,7 @@ jobs:
       - restore_cache:
           key: client-ng-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: cd client-ng && npm install
+      - run: cd client-ng && npm run lint --force
       - save_cache:
           key: client-ng-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
