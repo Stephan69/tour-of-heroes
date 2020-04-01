@@ -6,6 +6,7 @@
     "start": "ng serve --host 0.0.0.0",
     "build": "ng build --host 0.0.0.0",
     "test": "ng test -- --no-watch --no-progress || true",
+    "test:ci": "ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI || true",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run client-ng:serve-ssr",
