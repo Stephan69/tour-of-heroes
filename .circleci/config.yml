@@ -15,4 +15,5 @@ jobs:
           paths:
             - "node_modules"
       - run: cd client-ng && npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run: cd client-ng && npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run: cd client-ng && npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
